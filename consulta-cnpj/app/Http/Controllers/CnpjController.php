@@ -12,6 +12,12 @@ class CnpjController extends Controller
     public function index(string $cnpj) {
 
         $res = Http::get('https://brasilapi.com.br/api/cnpj/v1/'.$cnpj.'');
-        return response($res);
+        $data = $res->json();
+
+        if(empty($data)) {
+            return "Algo inválido";
+        }
+
+        return $data;
     }
 }
