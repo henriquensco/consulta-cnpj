@@ -15,5 +15,5 @@ use App\Http\Controllers\CnpjController;
 */
 
 Route::prefix('api')->group(function () {
-    Route::get('/{cnpj}', [CnpjController::class, 'index']);
+    Route::get('/{cnpj}', [CnpjController::class, 'getCnpj']);
 });
