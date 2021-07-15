@@ -13,9 +13,14 @@ class ConsultaTest extends TestCase
      *
      * @return void
      */
-    public function only_cnpj_accepted()
+    public function test_cnpj_accepted()
     {
-        $response = $this->get('/api')
-        ->assert
+        $response = $this->json('GET', '/api/19131243000197');
+
+        $response
+            ->assertStatus(200)
+            ->assertJsonPath('statusCode', 200);
+       
     }
+
 }
