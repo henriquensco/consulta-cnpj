@@ -3,21 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Http;
 
+use App\Services\ConsultaCnpjService;
 
 class CnpjController extends Controller
 {
-    public function index(string $cnpj) {
+    private $consultaCnpjService;
 
-        $res = Http::get('https://brasilapi.com.br/api/cnpj/v1/'.$cnpj.'');
-        $data = $res->json();
+    public function __construct() {
+        $this->consultaCnpjService = new ConsultaCnpjService();
+    }
 
-        if(empty($data)) {
-            return "Algo inválido";
-        }
+    public function getCnpj(string $cnpj): Object {
 
-        return $data;
+        $response = $this->consultaCnpjService->getCnpj($cnpj);
+
+        return response()->json($response);
+
+
     }
 }
