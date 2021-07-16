@@ -20,7 +20,7 @@ Depois basta executar o comando:
 	php artisan serve 
 ~~~
 
-## Rodando no aplicação no Docker
+## Executando no aplicação no Docker
 Criando container Docker
 ~~~~
 docker build -t consulta-cnpj/docker-laravel .
